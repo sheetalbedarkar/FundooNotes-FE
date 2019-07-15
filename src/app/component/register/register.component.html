@@ -1,0 +1,101 @@
+<div fxLayout="row" fxFlex="100" fxLayoutAlign="center center">
+    <div fxLayout="column" fxLayoutAlign="center center">
+
+        <mat-card fxLayout="column" fxFlex="100" fxLayoutAlign="center center">
+            <div fxLayout="row" fxLayoutAlign="start center">
+                <mat-card-header fxLayout="row">
+
+                    <mat-card-title>
+                        <h4>
+                            <span style='color: #4284f4'>F</span>
+                            <span style='color: #ea4334'>u</span>
+                            <span style='color: #fbbc04'>n</span>
+                            <span style='color: #4284f4'>d</span>
+                            <span style='color: #34a853'>o</span>
+                            <span style='color: #ea4334'>o</span>
+                            <span style='color: #4284f4'>N</span>
+                            <span style='color: #ea4334'>o</span>
+                            <span style='color: #fbbc04'>t</span>
+                            <span style='color: #4284f4'>e</span>
+                            <span style='color: #34a853'>s</span>
+                        </h4>
+                    </mat-card-title>
+
+                    <mat-card-subtitle>
+                        <h1>Create your account</h1>
+                    </mat-card-subtitle>
+
+                </mat-card-header>
+            </div>
+
+            <mat-card-content>
+                <div formArray = "array" fxLayout="column" fxFlex="100">
+
+                    <div>
+                        <div fxLayout="row" fxLayoutAlign="space-around center">
+                            <mat-form-field appearance="outline">
+                                <mat-label>First Name</mat-label>
+                                <input matInput placeholder="firstName" [formControl]="firstname">
+                                <mat-error *ngIf="firstname.invalid">{{firstNameError()}}</mat-error>
+                                <mat-icon matSuffix><img src="../../assets/outline-edit-24px.svg"></mat-icon>
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div fxLayout="row" fxLayoutAlign="center">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Last Name</mat-label>
+                                <input matInput placeholder="lastName" [formControl]="lastname" required>
+                                <mat-error *ngIf="lastname.invalid">{{lastNameError()}}</mat-error>
+                                <mat-icon matSuffix><img src="../../assets/outline-edit-24px.svg"></mat-icon>
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div fxLayout="row" fxLayoutAlign="center">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Email Id</mat-label>
+                                <input matInput placeholder="emailId" [formControl]="email" required>
+                                <mat-error *ngIf="email.invalid">{{emailError()}}</mat-error>
+                                <mat-icon matSuffix><img src="../../assets/outline-email.svg"></mat-icon>
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div fxLayout="row" fxLayoutAlign="center">
+                            <mat-form-field appearance="outline">
+                                <mat-label>password</mat-label>
+                                <input matInput placeholder="Password" [type]="hide ? 'text' : 'password' " [formControl]="password" required>
+                                <mat-error *ngIf="password.invalid">{{passwordError()}}</mat-error>
+                                <mat-icon matSuffix (click)="hide = !hide"><img src="../../assets/outline-visibility_off-24px.svg"></mat-icon>
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div fxLayout="row" fxLayoutAlign="center">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Confirm Password</mat-label>
+                                <input matInput placeholder="Confirm Password" [type]="hide ? 'text' : 'password' " [formControl]="cpassword" required>
+                                <mat-error *ngIf="cpassword.invalid">{{cpasswordError()}}</mat-error>
+                                <mat-icon matSuffix (click)="hide = !hide"><img src="../../assets/outline-visibility_off-24px.svg"></mat-icon>
+                            </mat-form-field>
+                        </div>
+                        <mat-error [ngClass]="'error'"> {{getErrorMessage}} </mat-error>
+                    </div>
+
+                    <mat-card-actions>
+                        <div fxLayout="row" fxLayoutAlign="center">
+                            <button mat-raised-button color="primary" id="register" (click)="register()">Register</button>
+                            <button mat-raised-button color="primary" id="login" routerLink='/login'> Login </button>
+                        </div>
+                    </mat-card-actions>
+
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

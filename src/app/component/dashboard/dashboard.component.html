@@ -1,0 +1,134 @@
+<div style="height: 100vh;">
+    <mat-toolbar color="#ffffff">
+        <mat-toolbar-row>
+            <div fxLayout="row" fxLayoutAlign="space-around center">
+            <button mat-icon-button (click)="sidenav.toggle()">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <div fxLayout="row" fxLayoutAlign="space-around center">
+             <img mat-img src="http://ssl.gstatic.com/keep/keep.ico" />
+            </div>
+            <div>
+            <span style="margin:12%">FundooApp</span>
+            </div>
+            
+            </div>
+            <div>
+                <mat-card fxLayoutAlign="center center" class="searchInput">
+                    <button mat-icon-button class="searchButton">
+                        <mat-icon>search</mat-icon>
+                    </button>
+                    <input mat-input class="searchInput" placeholder="Search">
+                </mat-card>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="space-around center" class="icon">
+                <div>
+                    <button mat-icon-button matTooltip="refresh">
+                        <mat-icon>refresh</mat-icon>
+                    </button>
+                </div>
+
+                <div> <button mat-icon-button matTooltip="list view">
+                    <mat-icon>view_agenda</mat-icon>
+                    </button>
+                </div>
+
+                <div>
+                    <button mat-icon-button matTooltip="setting">
+                        <mat-icon>settings</mat-icon>
+                    </button>
+                </div>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="end center">
+                <div fxLayout="wrap-row" fxLayoutAlign="space-evenly center" class="icons">
+                    <button mat-icon-button mat-toolbar matTooltip="apps" matSuffix>
+                        <mat-icon>apps</mat-icon>
+                    </button>
+                </div>
+
+                <div>
+                    <button mat-icon-button matTooltip="profile"  [matMenuTriggerFor]="accountmenu">
+
+                        <mat-icon>account_circle</mat-icon>
+                    </button>
+                </div>
+
+                
+            </div>
+
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+      <mat-menu class="menu" #accountmenu="matMenu">
+        <div>
+          <mat-card-header>
+            <button mat-button matPrefix>
+                <mat-icon style="font-size: 40px" >account_circle</mat-icon>
+              </button>
+            <mat-card-title class="text_color">{{firstName}} {{lastName}}</mat-card-title>
+            <mat-card-subtitle>{{email}}</mat-card-subtitle>
+          </mat-card-header><br>
+          <mat-divider></mat-divider>
+          <div fxLayout="row" fxLayoutAlign="end">
+           
+            <button mat-flat-button class="color" routerLink="/register">Add Account</button>
+            <button mat-flat-button class="color" routerLink="/login" (click)="logout()">Sign out</button>
+
+          </div>
+        </div>
+      </mat-menu>
+
+    <mat-sidenav-container fxFlexFill>
+        <mat-sidenav #sidenav mode="side">
+            <div fxLayout="column" fxLayoutAlign="start" fxFlex="100" class="sideNav">
+                <div><button mat-button style="width:100%">
+                    <mat-icon>lightbulb_outline</mat-icon>
+                        <span style="margin:28%" role="listitem"> Note</span>
+                    </button>
+                </div>
+
+                <div>
+                    <button mat-button style="width:100%">
+                        <mat-icon>notifications</mat-icon>
+                        <span style="margin:20%"> Reminders</span>
+                    </button>
+                </div>
+                <div>
+                    <mat-divider class="divider"></mat-divider> 
+                </div>
+                <span class="name">LABELS</span>
+                <div>
+                    <button mat-button style="width:100%">
+                        <mat-icon>label</mat-icon>
+                        <span style="margin:20%"> Edit Labels</span>
+                    </button>
+                </div>
+
+                <div>
+                    <mat-divider class="divider"></mat-divider>
+                    <button mat-button style="width:100%">
+                        <mat-icon>archive</mat-icon>
+                        <span style="margin:27%">Archive</span>
+                    </button>
+                </div>
+
+                <div>
+                    <button mat-button style="width:100%">
+                        <mat-icon>delete</mat-icon>
+                        <span style="margin:30%">Trash</span>
+                    </button>
+                </div>
+            </div>
+        </mat-sidenav>
+
+    <mat-sidenav-content fxFlexFill>
+            <app-add-note></app-add-note>
+        <!-- <router-outlet></router-outlet> -->
+    </mat-sidenav-content>
+
+    </mat-sidenav-container>
+
+    
+</div>
