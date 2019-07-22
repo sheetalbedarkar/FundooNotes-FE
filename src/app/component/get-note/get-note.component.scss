@@ -1,0 +1,58 @@
+.titleInput
+{
+  color: #202124;
+  direction: ltr;
+  word-wrap:break-word;
+  font-family: 'Roboto',arial,sans-serif;
+  font-size: 20px;
+}
+
+.contentInput
+{
+  color: #202124;
+  direction: ltr;
+  font-family: 'Roboto',arial,sans-serif;
+  font-size: 15px;
+  word-wrap:break-word;
+}
+
+.mat-color
+{
+  color:black
+}
+
+.noteHover:hover
+{
+  box-shadow: 6px 6px 6px #888888; 
+}
+
+.mat-card
+{
+  box-shadow: 1 2px 1px -1px black, 0 1px 1px 0 black, 0 1px 3px 0 black;
+  background-color: whitesmoke;
+  width: fit-content; 
+  width: 300px;
+  margin-top: 30px;
+}
+            
+.mainDiv
+{
+  height: fit-content; 
+  display: flex; 
+  flex-direction: row wrap; 
+  flex-flow: row wrap; 
+  align-items: flex-start;
+}
+
+.mat-icon
+{
+  font-size: 17px !important
+}
+
+.mat-icon-button
+{
+  background-color:transparent;
+  border-width: 0px;
+  outline:none;
+  border: transparent;
+}

@@ -33,7 +33,9 @@ export class UserService {
       url: url,
       data: data
     }
-    return this.httpService.postNew(option);
+    console.log(option);
+    
+    return this.httpService.postReq(option);
   }
 
   forgetPassword(url, data)
@@ -53,7 +55,7 @@ export class UserService {
       url : url,
       data : data
     }
-    return this.httpService.post(option);
+    return this.httpService.postRequest(option);
   }
 
 }

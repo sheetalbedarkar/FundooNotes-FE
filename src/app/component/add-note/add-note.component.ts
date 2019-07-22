@@ -10,8 +10,6 @@ import { NoteService } from 'src/app/core/service/note.service';
 })
 export class AddNoteComponent implements OnInit {
   private popup: boolean;
-  private flag: Boolean = false;
-  toggle: boolean = true;
 note : noteModel = new noteModel();
 
   constructor(
@@ -24,29 +22,17 @@ note : noteModel = new noteModel();
 
   addNote()
   {
-    console.log("Notes :::::",this.note)
+    this.popup = false;
     if (this.note.title != null) {
       this.noteService.createNote('note/createNote',this.note).subscribe(
         (response: any) => {
-          console.log(response);
           this.snackBar.open(
             "Note is created Successfully", "",
             { duration: 2500 }
           )
-
         }
-
       )
     }
-    else {
-      this.snackBar.open(
-        "empty title & decription note is not created", "",
-        { duration: 2500 });
-    }
-  }
-
-  show() {
-    this.flag = !this.flag;
   }
 
   onPopup() {

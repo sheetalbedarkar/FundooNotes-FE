@@ -1,0 +1,70 @@
+<div fxLayout="column" fxFill = 65 fxLayoutAlign="center stretch" class="mainDiv">
+  <div fxLayout="row" fxFill = 45 fxLayoutAlign="center stretch">
+    <mat-card fxLayout="row wrap" fxLayoutAlign="start stretch">
+      <div>
+        <input matInput type="text" placeholder="title" [formControl]="title" class="input"/>
+      </div>
+
+      <div>
+        <input matInput type="text" placeholder="Take a Note..." [formControl]="content" class="input"/>
+      </div>
+
+      <div fxLayout="row wrap" fxLayoutAlign="space-around center">
+
+        <div>
+          <button mat-icon-button matTooltip="Reminder">
+            <mat-icon style="font-size: 17px !important">add_alert</mat-icon>
+          </button>
+        </div>
+
+        <div>
+          <button mat-icon-button matTooltip="Collaborate" routerLink="/dashboard">
+            <mat-icon style="font-size: 17px !important">group_add</mat-icon>
+          </button>
+        </div>
+
+        <div>
+          <button mat-icon-button matTooltip="Change Color" routerLink="/dashboard">
+            <mat-icon style="font-size: 17px !important">color_lens</mat-icon>
+          </button>
+        </div>
+
+        <div>
+          <button mat-icon-button matTooltip="Add Image" routerLink="/dashboard">
+            <mat-icon style="font-size: 17px !important">image</mat-icon>
+          </button>
+        </div>
+
+        <div>
+          <button mat-icon-button matTooltip="Archive" routerLink="/dashboard">
+            <mat-icon style="font-size: 17px !important">archive</mat-icon>
+          </button>
+        </div>
+
+        <div>
+          <button mat-icon-button matTooltip="More Option" routerLink="/dashboard">
+            <mat-icon style="font-size: 17px !important">more_vert</mat-icon>
+          </button>
+        </div>
+
+        <div>
+          <button mat-icon-button matTooltip="Undo" routerLink="/dashboard">
+            <mat-icon style="font-size: 17px !important">undo</mat-icon>
+          </button>
+        </div>
+        
+        <div>
+          <button mat-icon-button matTooltip="Redo" routerLink="/dashboard">
+            <mat-icon style="font-size: 17px !important">redo</mat-icon>
+          </button>
+        </div>
+
+        <div class="divspace">
+          <button mat-button matTooltip="close" (click)="onClose();">Close</button>
+        </div>
+
+      </div>
+    </mat-card>
+
+  </div>
+</div>

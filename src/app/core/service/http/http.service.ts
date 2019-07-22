@@ -15,32 +15,7 @@ export class HttpService {
   {
     const httpOptions = {
       headers: new HttpHeaders({
-        //'Content-Type': 'application/json',
         'token': localStorage.getItem('token')
-      })
-    };
-
-    return this.http.post(this.baseUrl + options.url, options.data,httpOptions)
-  }
-
-  public post(options):any
-  {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        //'Content-Type': 'application/json',
-        'token': localStorage.getItem('token1')
-      })
-    };
-
-    return this.http.post(this.baseUrl + options.url, options.data,httpOptions)
-  }
-
-  public postNew(options):any
-  {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        //'Content-Type': 'application/json',
-        'token': localStorage.getItem('token1')
       })
     };
 
@@ -52,20 +27,47 @@ export class HttpService {
     return this.http.post(this.baseUrl + options.url, options.data);
   }
 
-  // public getRequest(url : any, data : any):any
-  // {
-  //   return this.http.get(this.baseUrl + url, data)
-  // }
+  public getNote(options):any
+  {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'token': localStorage.getItem('token')
+      })
+    }; 
+
+    return this.http.get(this.url + options.url, httpOptions)
+  }
+
+public putRequest(options):any
+  {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'token': localStorage.getItem('token')
+      })
+    }; 
+
+    return this.http.put(this.url + options.url, options.data, httpOptions)
+  }
+  public deleteRequest(options):any
+  {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'token': localStorage.getItem('token')
+      })
+    }; 
+
+    return this.http.delete(this.url + options.url, httpOptions)
+  }
 
   public postNote(options):any
   {
     const httpOptions = {
       headers: new HttpHeaders({
-        //'Content-Type': 'application/json',
         'token': localStorage.getItem('token')
       })
     }; 
 
     return this.http.post(this.url + options.url, options.data, httpOptions)
   }
+  
 }

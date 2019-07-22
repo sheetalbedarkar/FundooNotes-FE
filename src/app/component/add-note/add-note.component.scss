@@ -1,144 +1,55 @@
-// .card-rechange{
-//     border-radius: 10px;
-//     box-shadow: 0 3px 8px rgba(0,0,0,0.16);
-// }
-// .search{
-//     width:37vw; 
-//     border-color: transparent;  
-//     outline: none;
-// }
-// .search::-webkit-input-placeholder {
-//     color: #81878c;
-//     font-weight: lighter;
-//     font-size: 18px;
-//     font-family:Arial, Helvetica, sans-serif;
-//     line-height: 40px;
-   
-// }
-// .mat-icon-button{
-//     display: flex;
-//     outline: none;
-// }
-// .card{
-//     display: flex;
-//     border-radius: 10px;
-//     box-shadow: 0 3px 8px rgba(0,0,0,0.16);
-//     min-height: fit-content;
-
-//     }
-// .search2{
-
-//     width:40vw; 
-//     border-color: transparent;  
-//     outline: none;
-//     }
-// .search2::-webkit-input-placeholder {
-//     color: #81878c;
-//     font-weight: lighter;
-//     font-size: 21px;
-//     font-family:Arial, Helvetica, sans-serif;
-// }
-// .textAreaa{
-//     min-height: 40px;
-//     width:43vw; 
-//     border-color: transparent;  
-//     outline: none;
-//     overflow: hidden;
-
-// }
-// .textAreaa::-webkit-input-placeholder {
-//     color: #81878c;
-//     font-weight: lighter;
-//     font-size: 21px;
-//     font-family:Arial, Helvetica, sans-serif; 
-//     //line-height: 20px;  
-// }
-// .textArea{
-//     min-height: 50px;
-//     width:43vw; 
-//     border-color: transparent;  
-//     outline: none;
-//     overflow: hidden;
-
-// }
-// .textArea::-webkit-input-placeholder {
-//     color: #81878c;
-//     font-weight: lighter;
-//     font-size: 14px;
-//     font-family:Arial, Helvetica, sans-serif;
-//     //line-height: 20px;    
-// }
-//  .card-center{
-//    display: flex;
-//    height: 18vh;
-//    background-color: white;
-//   }
-
-// .card-center1{
-//    display: flex;
-//    height: 30vh;
-//    background-color: white;
-//   }
-//   .allNotes{
-//       width: 100vw;
-//       height: 100vh;
-//   }
-// // .abc{
-// //     min-height: -webkit-fill-available;
-// // }
-
-
-.popdownCard{
-    margin-left: 10%;
-
-    margin-right: 41%;
-}
-.popupCard{
-    height: 34px;
-    width: 464px;
-    margin-top: 5%;
-    height: 46px !important;
-}
-
 .topinput
 {
-    width: 80%;
-    border: 0;
+    width: 430px;
+    margin-left: 3%;
+    border: rgb(255, 227, 191);
+    color: #202124;
+    direction: ltr;
+    font-family: 'Roboto',arial,sans-serif;
+    font-size: .875rem;
+       
+    outline: none;
+    border-color: transparent;
 }
 
 .input
 {
-width: 430px;
-
-border: rgb(255, 227, 191);
+    width: 480px;
+    height: 30px;
+    border: rgb(255, 227, 191);
+    color: #202124;
+    direction: ltr;
+    font-family: 'Roboto',arial,sans-serif;
+    font-size: .875rem;
+    
+    outline: none;
+    border: transparent;
+    overflow: hidden;
 }
 
-input.input:focus{
-outline-width: 0; 
-}
-
-.matcard {
-    padding: 10px;
-    margin-block-start: -29px;
-}
-.matcard1
+input.input:focus
 {
-  
-    max-width: 77%;
-     margin-top: -75px;
+    outline-width: 0; 
+}
+.popupCard 
+{
+    transition: box-shadow 280ms cubic-bezier(.4,0,.2,1);
+    display: flex;
+    position: relative;
+    border-radius: 4px;
+    width: 500px;
 }
 
-
-.mat{
-  
-    width: 260%;
+.popdownCard
+{
+    transition: box-shadow 280ms cubic-bezier(.4,0,.2,1);
+    display: flex;
+    position: relative;
+    border-radius: 4px;
+    width: 500px;
 }
-.mainDiv
-  {
-    min-height: -webkit-fill-available;
-  }
 
-  .divEdit
-  {
-    height: 250px;
-  }
+.divEdit
+{
+    margin-top: 28px;
+}

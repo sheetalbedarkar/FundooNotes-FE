@@ -17,10 +17,10 @@ export class ResetPasswordComponent implements OnInit {
   password = new FormControl(this.data.password, [Validators.required, Validators.minLength(6)])
   cpassword = new FormControl(this.data.cpassword, [Validators.required])
 
-  constructor(public formBuilder: FormBuilder, 
-    private snackBar: MatSnackBar, 
-    private userService: UserService, 
-    private route: ActivatedRoute, 
+  constructor(public formBuilder: FormBuilder,
+    private snackBar: MatSnackBar,
+    private userService: UserService,
+    private route: ActivatedRoute,
     private router: Router) { }
   accesstoken = this.route.snapshot.paramMap.get('token')
 
@@ -39,12 +39,11 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   resetPassword() {
-    console.log(this.data);
     this.userService.resetPassword('resetPassword/' + this.accesstoken, this.data).subscribe(
       response => {
         this.snackBar.open(
-          'password reset Successfully', 
-          'End now', 
+          'password reset Successfully',
+          'End now',
           { duration: 1000 });
         this.router.navigateByUrl('login');
       },

@@ -36,27 +36,20 @@ export class LoginComponent implements OnInit {
       password:this.password.value
     }
     this.userService.login('login',user).subscribe(
-      //console.log("RESPONSE :::::",response),
-      
+
       response => 
       {
-        //var id = response._id;
         var userId = response.data[0]._id;
         var firstName = response.data[0].firstname;
         var lastName = response.data[0].lastname;
         var email = response.data[0].email
-        console.log("RESPIBNSE ::::::",response)
-        console.log(userId);
         var token=response.token
-        console.log(token);
-        
+
         localStorage.setItem('token',token)
         localStorage.setItem("userId", userId);
-        //localStorage.setItem("_id", id);
         localStorage.setItem("firstName", firstName);
         localStorage.setItem("lastName", lastName);
         localStorage.setItem("email", email);
-        // localStorage.setItem("profilPic", response["imageUrl"]);
         this.snackBar.open(
           'login Successful', 
           'End now', 
@@ -66,6 +59,8 @@ export class LoginComponent implements OnInit {
 
       error => 
       {
+        console.log(error);
+        
         this.snackBar.open(
           "login Failed",
           "undo",

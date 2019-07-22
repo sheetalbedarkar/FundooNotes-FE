@@ -1,4 +1,4 @@
-<div fxLayout="row" fxFlex="100" fxLayoutAlign="center center">
+<div fxLayout="row" fxFlex="100" fxLayoutAlign="center center" style="height: 100ch">
     <div fxLayout="column" fxLayoutAlign="center center">
 
         <mat-card fxLayout="column" fxFlex="100" fxLayoutAlign="center center">
@@ -49,7 +49,7 @@
                                 <mat-label>password</mat-label>
                                 <input matInput placeholder="Password" [type]="hide ? 'text' : 'password' " [formControl]="password" required>
                                 <mat-error *ngIf="password.invalid">{{passwordError()}}</mat-error>
-                                <mat-icon matSuffix (click)="hide = !hide"><img src="../../assets/outline-visibility_off-24px.svg"></mat-icon>
+                                <mat-icon matSuffix (click)="hide = !hide" >{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
                             </mat-form-field>
                         </div>
                     </div>

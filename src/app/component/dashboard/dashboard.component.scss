@@ -1,14 +1,6 @@
-.menu-spacer {
-  flex: 1 1 auto;
-}
-
-.mainDiv{
-  width: 20%;
-}
-
-.mat
+.menu-spacer 
 {
-  width: 260%;
+  flex: 1 1 auto;
 }
 
 .button
@@ -25,7 +17,8 @@ font-family: Arial, sans-serif;
 
 }
 
-.searchInput{
+.searchInput
+{
 display: flex;
 border:none;
 width: 53vw;
@@ -39,7 +32,8 @@ outline: none;
 box-shadow: none;
 }
 
-.searchInput::-webkit-input-placeholder {
+.searchInput::-webkit-input-placeholder 
+{
 color: #81878c;
 font-weight: lighter;
 font-size: 18px;
@@ -47,23 +41,24 @@ font-family:Arial, Helvetica, sans-serif;
 line-height: 40px;
 }
 
-.mat-button{
+.mat-button
+{
 outline: none;
 background-color: transparent;
 border-top-right-radius: 38px;
 border-bottom-right-radius: 38px;
 height: 50px;
 }
+
 .mat-button:focus
 {
 background-color: #fef0c3;
 }
 
-.spacing
-{
-margin-left: 107px;
-}
-
+// .spacing
+// {
+// margin-left: 107px;
+// }
 
 .sideNav
 {
@@ -71,7 +66,8 @@ width: 272px;
 
 }
 
-.icon{
+.icon
+{
 margin-top: -2px;
 margin-left: 50px;
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserModel } from '../../core/model/userModel'
-import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { UserService } from 'src/app/core/service/user.service';
 import { ActivatedRoute, Router } from '@angular/router'
 
@@ -15,13 +15,11 @@ export class VerifyUserComponent implements OnInit {
   data: string;
   constructor(public formBuilder: FormBuilder, 
     private userService: UserService,
-    private route: ActivatedRoute, 
-    private router: Router) { }
+    private route: ActivatedRoute) { }
   accesstoken = this.route.snapshot.paramMap.get('token')
 
   ngOnInit() {
     this.data = "";
-    console.log(this.accesstoken);
     localStorage.setItem('token', this.accesstoken)
     this.userService.verifyUser('isVerified/' + this.accesstoken, this.data).subscribe(
       response => 

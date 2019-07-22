@@ -51,8 +51,6 @@ export class RegisterComponent implements OnInit {
   }
   
   register() {
-    console.log("USER :::::::",this.user);
-    console.log("firstname",this.firstname);
     this.user={
       firstname:this.firstname.value,
       lastname:this.lastname.value,
@@ -72,8 +70,6 @@ export class RegisterComponent implements OnInit {
       this.userService.register('register', this.user).subscribe(
         response => 
         {
-          console.log(response);
-          
           this.snackBar.open(
             'Registration Successful', 
             'End now', 
@@ -91,5 +87,4 @@ export class RegisterComponent implements OnInit {
         }
       )
   }
-
 }

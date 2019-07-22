@@ -2,17 +2,21 @@
     <mat-toolbar color="#ffffff">
         <mat-toolbar-row>
             <div fxLayout="row" fxLayoutAlign="space-around center">
-            <button mat-icon-button (click)="sidenav.toggle()">
-                <mat-icon>menu</mat-icon>
-            </button>
-            <div fxLayout="row" fxLayoutAlign="space-around center">
-             <img mat-img src="http://ssl.gstatic.com/keep/keep.ico" />
-            </div>
             <div>
-            <span style="margin:12%">FundooApp</span>
+                <button mat-icon-button (click)="sidenav.toggle()">
+                    <mat-icon>menu</mat-icon>
+                </button>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="space-around center">
+                <img mat-img src="http://ssl.gstatic.com/keep/keep.ico" />
+            </div>
+
+            <div>
+                <span style="margin:12%">FundooApp</span>
+            </div>
             </div>
             
-            </div>
             <div>
                 <mat-card fxLayoutAlign="center center" class="searchInput">
                     <button mat-icon-button class="searchButton">
@@ -82,7 +86,7 @@
 
     <mat-sidenav-container fxFlexFill>
         <mat-sidenav #sidenav mode="side">
-            <div fxLayout="column" fxLayoutAlign="start" fxFlex="100" class="sideNav">
+            <div fxLayout="column" fxLayoutAlign="start" class="sideNav">
                 <div><button mat-button style="width:100%">
                     <mat-icon>lightbulb_outline</mat-icon>
                         <span style="margin:28%" role="listitem"> Note</span>
@@ -98,7 +102,9 @@
                 <div>
                     <mat-divider class="divider"></mat-divider> 
                 </div>
+
                 <span class="name">LABELS</span>
+
                 <div>
                     <button mat-button style="width:100%">
                         <mat-icon>label</mat-icon>
@@ -123,9 +129,12 @@
             </div>
         </mat-sidenav>
 
-    <mat-sidenav-content fxFlexFill>
+    <mat-sidenav-content>
+        <div fxLayout="column" fxLayoutAlign="center">
             <app-add-note></app-add-note>
-        <!-- <router-outlet></router-outlet> -->
+        <router-outlet></router-outlet>
+        <app-get-note></app-get-note>
+    </div>
     </mat-sidenav-content>
 
     </mat-sidenav-container>

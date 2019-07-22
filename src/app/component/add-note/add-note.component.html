@@ -1,47 +1,36 @@
-<div class="flex2" fxLayout="row" fxLayoutAlign="center" class="mainDiv">
-  <div class="flex1" fxLayout="row" fxFlex="50" fxFlexHeight="15px" fxLayoutAlign="center center" class="divEdit">
+<div fxLayout="row" fxLayoutAlign="center start" class="mainDiv">
+  <div fxLayout="row" fxFlexHeight="20px" fxLayoutAlign="center center" class="divEdit">
 
-    <mat-card *ngIf="!popup" (click)="onPopup()" class="popupCard" fxLayout="column" fxFlex="90" fxLayoutAlign="start"
-      class="matcard">
-      <div>
-        <input matInput type="text" placeholder="Take a Note..." class="topinput" style="font-size: .875rem;">
-        <button mat-icon-button matTooltip="Brush" routerLink="/dashboard" style="margin-right: 3px">
-          <mat-icon style="font-size: 18px !important">brush</mat-icon>
-        </button>
+    <mat-card *ngIf="!popup" (click)="onPopup()" fxLayout="column" class="popupCard"  fxLayoutAlign="center center">
+        <div fxLayout="row" fxLayoutAlign="center center">
+          <input matInput type="text" placeholder="Take a Note..." class="topinput">
+            <div fxLayout="row" fxLayoutAlign="end end">
+              <button mat-icon-button matTooltip="Brush" routerLink="/dashboard" >
+                <mat-icon>brush</mat-icon>
+              </button>
 
-        <button mat-icon-button matTooltip="Image" routerLink="/dashboard" style="margin-right: 3px">
-          <mat-icon style="font-size: 18px !important">photo</mat-icon>
-        </button>
+              <button mat-icon-button matTooltip="Image" routerLink="/dashboard" >
+                <mat-icon>photo</mat-icon>
+              </button>
+          </div>
       </div>
     </mat-card>
 
+    <mat-card *ngIf="popup" fxLayout="column" class="popdownCard" fxLayoutAlign="space-around start">
+     
+        <div>
+          <textarea matInput type="text" placeholder="title" class="input"  [(ngModel)]="note.title" ></textarea>
+        </div>
 
-
-    <div class="something" role="button" style="-moz-user-select: none;"></div>
-
-
-
-
-
-    <mat-card *ngIf="popup" fxLayout="column" fxFlex="90" fxLayoutAlign="start" class="matcard1">
-      <div>
-        <input matInput type="text" placeholder="title" class="input" style=" font-size: 1rem;"
-          [(ngModel)]="note.title" />
-        <button matTooltip="pinned" style="background-color: white;border-width: 0px;">
-          <!-- <div><img src="../../../assets/unpinned.svg"></div> -->
-        </button>
-      </div>
-
-      <div fxLayout="row" fxLayoutAlign="start start">
-        <input matInput type="text" placeholder="Take a Note..." [(ngModel)]="note.content" class="input"
-          style="font-size: 10px;" style="margin-top:-20px"
-          style="color: #202124;direction: ltr;font-family: 'Roboto',arial,sans-serif;font-size: .875rem;" />
-      </div>
-      <div style="display: flex;flex-direction: row;">
+        <div fxLayout="row-wrap" fxLayoutAlign="center center">
+          <textarea matInput type="text" placeholder="Take a Note..." [(ngModel)]="note.content" class="input" ></textarea>
+          
+        </div>
+      
+      <div fxLayout="row" fxLayoutAlign="space-between end" >
         <div>
           <button mat-icon-button matTooltip="Reminder">
             <mat-icon style="font-size: 17px !important">add_alert</mat-icon>
-
           </button>
         </div>
 
@@ -80,15 +69,14 @@
             <mat-icon style="font-size: 17px !important">undo</mat-icon>
           </button>
         </div>
+
         <div>
           <button mat-icon-button matTooltip="Redo" routerLink="/dashboard">
             <mat-icon style="font-size: 16px !important">redo</mat-icon>
           </button>
         </div>
 
-
-        <div class="divspace">
-
+        <div fxLayoutAlign="end end" class="divspace">
           <button mat-button matTooltip="close" (click)=addNote()>Close</button>
         </div>
 

@@ -1,8 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -24,6 +22,13 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatMenuModule} from '@angular/material/menu';
 import { AddNoteComponent } from './component/add-note/add-note.component';
+import { GetNoteComponent } from './component/get-note/get-note.component';
+import { ArchiveNoteComponent } from './component/archive-note/archive-note.component';
+import { TrashNoteComponent } from './component/trash-note/trash-note.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatDialogModule} from '@angular/material/dialog';
+import {DialogBoxComponent} from './component/dialog-box/dialog-box.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -34,7 +39,12 @@ import { AddNoteComponent } from './component/add-note/add-note.component';
     ResetPasswordComponent,
     VerifyUserComponent,
     DashboardComponent,
-    AddNoteComponent
+    AddNoteComponent,
+    GetNoteComponent,
+    ArchiveNoteComponent,
+    TrashNoteComponent,
+    DialogBoxComponent
+ 
   ],
   imports: [
     BrowserModule,
@@ -53,9 +63,13 @@ import { AddNoteComponent } from './component/add-note/add-note.component';
     MatDividerModule,
     MatToolbarModule,
     MatSidenavModule,
-    MatMenuModule
+    MatMenuModule,
+    MatDatepickerModule,
+    MatDialogModule,
+    MatTooltipModule
   ],
   providers: [],
+  entryComponents: [DialogBoxComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

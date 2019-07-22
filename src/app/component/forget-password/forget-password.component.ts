@@ -3,7 +3,7 @@ import { UserModel } from '../../core/model/userModel'
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserService } from 'src/app/core/service/user.service';
-import { ActivatedRoute, Router } from '@angular/router'
+import { Router } from '@angular/router'
 @Component({
   selector: 'app-forget-password',
   templateUrl: './forget-password.component.html',
@@ -16,7 +16,6 @@ export class ForgetPasswordComponent implements OnInit {
   constructor(public formBuilder: FormBuilder, 
     private snackBar: MatSnackBar, 
     private userService: UserService, 
-    private route: ActivatedRoute, 
     private router: Router) { }
 
   ngOnInit() {
