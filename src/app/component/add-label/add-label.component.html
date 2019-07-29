@@ -1,0 +1,18 @@
+<div id=1>
+
+  <div class="labels1" style="display: flex; flex-direction: row" *ngFor="let label of labels" id=2 class="mainDiv">
+
+    <div (click)="onDeleteLabel(labels)">
+      <mat-icon>delete_outline</mat-icon>
+    </div>
+
+    <div matTooltip="{{label.label}}">
+      <input matInput="text" [(ngModel)]="label.label" placeholder="{{label.label}}"> 
+    </div>
+
+    <div (click)="onEditLabel(labels)">
+      <mat-icon>edit</mat-icon>
+    </div>
+
+  </div>
+</div>

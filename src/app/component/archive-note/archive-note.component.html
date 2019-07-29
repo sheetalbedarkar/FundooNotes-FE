@@ -1,1 +1,82 @@
-<p>archive-note works!</p>
+<div>
+  <h3 style="color: gray;">ARCHIVE NOTES</h3>
+</div>
+<div fxLayout="row-wrap" fxLayoutAlign="space-around start" class="mainDiv">
+
+  <div *ngFor="let items of notes">
+    <mat-card class="noteHover">
+
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="titleInput" (click)="openDialog(items)">
+          {{items.title}}
+        </div>
+
+        <div class="apppin">
+          <span>
+            <mat-icon matTooltip="pinned"><img src="../../../assets/unpinned.svg"></mat-icon>
+          </span>
+        </div>
+      </div>
+
+      <div class="contentInput" (click)="openDialog(items)" style="word-break: break-all;">
+        {{items.content}}
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="space-around end">
+        <div class="noteIcon">
+
+          <button mat-icon-button matTooltip="Remind me">
+            <mat-icon class="mat-color ">add_alert</mat-icon>
+          </button>
+
+          <button mat-icon-button matTooltip="collaborator">
+            <mat-icon class="mat-color ">group_add</mat-icon>
+          </button>
+
+          <button mat-icon-button matTooltip="Set Color" matTooltip="Change color" [matMenuTriggerFor]="colorMenu">
+            <mat-icon class="mat-color ">color_lens</mat-icon>
+          </button>
+
+          <button mat-icon-button matTooltip="unarchieved" (click)="onArchive(items)" >
+            <mat-icon class="mat-color ">archive</mat-icon>
+          </button>
+
+
+          <button mat-icon-button matTooltip="New note with image">
+            <mat-icon class="mat-color ">image</mat-icon>
+          </button>
+
+          <span class="fill-remaining-space">
+            <button mat-icon-button matTooltip="more">
+              <mat-icon matTooltip="more" [matMenuTriggerFor]="menu" class="mat-color ">more_vert</mat-icon>
+            </button>
+
+            <mat-menu #menu="matMenu" [overlapTrigger]="false">
+              <button mat-menu-item (click)="trashNote(items)">
+                <span>Delete Note</span>
+              </button>
+
+              <button mat-menu-item>
+                <span>Add Label</span>
+              </button>
+            </mat-menu>
+          </span>
+        </div>
+
+        <div>
+          <mat-menu #colorMenu="matMenu" fxFlex="80" [overlapTrigger]="false">
+            <div *ngFor="let color of colorCodes" fxLayout="row wrap">
+              <div *ngFor="let iteam of color">
+                <button matbutton (click)="changeColor(color.name,items.noteId)" mat-mini-fab
+                  [ngStyle]="{ 'background-color': iteam.name }">
+                </button>
+              </div>
+            </div>
+          </mat-menu>
+        </div>
+
+      </div>
+
+    </mat-card>
+  </div>
+</div>

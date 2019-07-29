@@ -19,7 +19,7 @@ export class HttpService {
       })
     };
 
-    return this.http.post(this.baseUrl + options.url, options.data,httpOptions)
+    return this.http.post(this.baseUrl + options.url, options.data, httpOptions)
   }
 
   public postReq(options):any
@@ -68,6 +68,16 @@ public putRequest(options):any
     }; 
 
     return this.http.post(this.url + options.url, options.data, httpOptions)
+  }
+
+  public deleteNote(options):any
+  {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'token': localStorage.getItem('token')
+      })
+    }; 
+    return this.http.put(this.url + options.url,options.data, httpOptions)
   }
   
 }

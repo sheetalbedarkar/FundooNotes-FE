@@ -38,6 +38,9 @@ export class ResetPasswordComponent implements OnInit {
       this.cpassword.hasError('minlength') ? 'Minimum length must be 6' : '';
   }
 
+  /**
+   * onClick function for reset password
+   */
   resetPassword() {
     this.userService.resetPassword('resetPassword/' + this.accesstoken, this.data).subscribe(
       response => {

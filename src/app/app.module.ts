@@ -25,10 +25,14 @@ import { AddNoteComponent } from './component/add-note/add-note.component';
 import { GetNoteComponent } from './component/get-note/get-note.component';
 import { ArchiveNoteComponent } from './component/archive-note/archive-note.component';
 import { TrashNoteComponent } from './component/trash-note/trash-note.component';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatDialogModule} from '@angular/material/dialog';
-import {DialogBoxComponent} from './component/dialog-box/dialog-box.component';
-import {MatTooltipModule} from '@angular/material/tooltip';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DialogBoxComponent } from './component/dialog-box/dialog-box.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { AddLabelComponent } from './component/add-label/add-label.component';
+import { DialogBoxLabelComponent } from './component/dialog-box-label/dialog-box-label.component';
+import {MatChipsModule} from '@angular/material/chips';
+
 
 @NgModule({
   declarations: [
@@ -43,7 +47,9 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     GetNoteComponent,
     ArchiveNoteComponent,
     TrashNoteComponent,
-    DialogBoxComponent
+    DialogBoxComponent,
+    AddLabelComponent,
+    DialogBoxLabelComponent
  
   ],
   imports: [
@@ -66,7 +72,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatMenuModule,
     MatDatepickerModule,
     MatDialogModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatChipsModule
   ],
   providers: [],
   entryComponents: [DialogBoxComponent],

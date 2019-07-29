@@ -28,6 +28,9 @@ export class ForgetPasswordComponent implements OnInit {
         '';
   }
 
+  /**
+   * onSubmit forget password function
+   */
   forgetPassword() {
     this.userService.forgetPassword('forgetPassword', this.user).subscribe(
       response => 

@@ -49,7 +49,10 @@ export class RegisterComponent implements OnInit {
     return this.cpassword.hasError('required') ? 'Confirm Passowrd is require' :
       this.cpassword.hasError('minlength') ? 'Minimum length must be 6' : '';
   }
-  
+
+/**
+ * onSubmit function to register the user
+ */  
   register() {
     this.user={
       firstname:this.firstname.value,

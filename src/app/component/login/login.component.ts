@@ -30,6 +30,11 @@ export class LoginComponent implements OnInit {
     return this.password.hasError('required') ? 'Passowrd is require' :
       this.password.hasError('minlength') ? 'Minimum length must be 6' : '';
   }
+
+  /**
+   * onSubmit function to login the user
+   * @param user
+   */
   login(user) {
      user = {
       email:this.email.value,
@@ -39,6 +44,7 @@ export class LoginComponent implements OnInit {
 
       response => 
       {
+        console.log("RESPONSE",response)
         var userId = response.data[0]._id;
         var firstName = response.data[0].firstname;
         var lastName = response.data[0].lastname;

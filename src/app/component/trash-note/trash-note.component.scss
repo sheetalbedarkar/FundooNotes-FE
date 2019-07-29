@@ -1,20 +1,21 @@
-.input
-{
-    margin-bottom: 6%;
-    width: 430px;
-    font-size: 25px;
-    border: antiquewhite;
-}
+// .input
+// {
+//     margin-bottom: 6%;
+//     width: 430px;
+//     font-size: 25px;
+//     border: antiquewhite;
+// }
 
-input.input:focus
-{
-    outline-width: 0; 
-}
-.popupCard
-{
-margin-left: 10%;
-margin-right: 41%;   
-}
+// input.input:focus
+// {
+//     outline-width: 0; 
+// }
+
+// .popupCard
+// {
+// margin-left: 10%;
+// margin-right: 41%;   
+// }
    
 .flex-container 
 {
@@ -23,15 +24,37 @@ margin-right: 41%;
 
 .mainDiv
 {
-    width: 276px;
+  height: fit-content; 
+  display: flex; 
+  flex-direction: row wrap; 
+  flex-flow: row wrap; 
+  align-items: flex-start;
 }
+
 .mat-card
 {
-    display: flex;
-    flex-direction: row warp;
-    justify-content: space-between;
-    width: fit-content; 
-    margin-left: 5%; 
-    margin-right: 1%;
-    margin-top: 5%;
+  box-shadow: 1 2px 1px -1px black, 0 1px 1px 0 black, 0 1px 3px 0 black;
+  background-color: whitesmoke;
+  width: fit-content; 
+  width: 300px;
+  margin-top: 30px;
+}
+
+.titleInput
+{
+    color: #202124;
+    direction: ltr;
+    font-family: 'Roboto',arial,sans-serif;
+    font-size: 20px;
+    margin-top:-12px;
+    margin-top:12px;
+}
+
+.contentInput
+{
+    color: #202124;
+    direction: ltr;
+    font-family: 'Roboto',arial,sans-serif;
+    font-size: 15px;
+    margin-top:8px
 }

@@ -49,6 +49,9 @@ export class GetNoteComponent implements OnInit {
       ]
     ]
 
+/**
+ * function to display all notes
+ */
     getNote()
     {
         this.noteService.getAllNotes('note/getAllNotes').subscribe(
@@ -59,6 +62,10 @@ export class GetNoteComponent implements OnInit {
         )
     }
 
+    /**
+     * Open Dialoge box function to edit note
+     * @param items
+     */
     openDialog(items: any) {
       const dialogRef = this.matDialog.open(DialogBoxComponent, {
         width: '500px', height: '190px',
@@ -74,14 +81,19 @@ export class GetNoteComponent implements OnInit {
   
     }
     
+    /**
+     * onClick function for trash note
+     * @param items 
+     * @param $event 
+     */
     trashNote(items,$event) {
       this.trash = $event
       var data = {
         "isTrash" : true,
-        "_id" : items._id
+        "id" : items._id
       }
       console.log("TRASHNOTE noteId :::::::",data)
-      this.noteService.trashNote('note/trashNote/'+items._id,data).subscribe(
+      this.noteService.trashNote('note/trashNote/'+items.id,data).subscribe(
   
         (response: any) => {
           
@@ -103,14 +115,19 @@ export class GetNoteComponent implements OnInit {
       )
     }
 
+    /**
+     * onClick function to archive note
+     * @param items 
+     * @param $event 
+     */
     onArchive(items,$event) {
       this.isArchive = $event
       var data = {
         "isArchive" : true,
-        "_id" : items._id
+        "id" : items._id
       }
       console.log("isArchive noteId :::::::",data)
-      this.noteService.archiveNote('note/archiveNote/'+items._id,data).subscribe(
+      this.noteService.archiveNote('note/archiveNote/'+items.id,data).subscribe(
   
         (response: any) => {
           

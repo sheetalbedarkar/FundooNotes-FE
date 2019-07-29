@@ -10,18 +10,36 @@ import { AddNoteComponent } from './component/add-note/add-note.component';
 import { GetNoteComponent } from './component/get-note/get-note.component';
 import { DialogBoxComponent } from './component/dialog-box/dialog-box.component';
 import { TrashNoteComponent } from './component/trash-note/trash-note.component';
+import { ArchiveNoteComponent } from './component/archive-note/archive-note.component';
+import { DialogBoxLabelComponent } from './component/dialog-box-label/dialog-box-label.component';
+import { AddLabelComponent } from './component/add-label/add-label.component';
+
 
 const routes: Routes = [
-  {path: 'register', component:RegisterComponent},
-  {path: 'login', component:LoginComponent},
-  {path : 'forgetPassword', component:ForgetPasswordComponent},
-  {path : 'user/resetPassword/:token', component:ResetPasswordComponent},
-  {path : 'user/isVerified/:token', component:VerifyUserComponent},
-  {path : 'dashboard', component:DashboardComponent},
-  {path : 'createNote', component : AddNoteComponent},
-  {path : 'getAllNotes' , component:GetNoteComponent},
-  {path : 'editNote', component : DialogBoxComponent},
-  {path : 'trashNote', component : TrashNoteComponent}
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'forgetPassword', component: ForgetPasswordComponent },
+  { path: 'user/resetPassword/:token', component: ResetPasswordComponent },
+  { path: 'user/isVerified/:token', component: VerifyUserComponent },
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'createNote', component: AddNoteComponent },
+  { path: 'getAllNotes', component: GetNoteComponent },
+  // {path : 'editNote', component : DialogBoxComponent},
+  { path: 'getAllTrashNotes', component: TrashNoteComponent },
+  { path: 'getAllArchiveNotes', component: ArchiveNoteComponent },
+  {
+    path: 'dashboard', component: DashboardComponent,
+    children: [
+      { path: 'getAllNotes', component: GetNoteComponent },
+      { path: 'getAllTrashNotes', component: TrashNoteComponent },
+      { path: 'getAllArchiveNotes', component: ArchiveNoteComponent },
+      { path: 'editNote', component: DialogBoxComponent },
+    ]
+  },
+  { path: 'createLabel', component: DialogBoxLabelComponent },
+  { path: 'label', component: AddLabelComponent }
+
 ];
 
 @NgModule({

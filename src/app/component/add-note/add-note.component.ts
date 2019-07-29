@@ -19,7 +19,10 @@ note : noteModel = new noteModel();
 
   ngOnInit() {
   }
-
+  
+/** 
+ * Onclick function for add Note
+ */
   addNote()
   {
     this.popup = false;
