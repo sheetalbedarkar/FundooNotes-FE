@@ -8,7 +8,22 @@ import { HttpClient,HttpHeaders } from '@angular/common/http';
 export class HttpService {
   baseUrl = environment.baseUrl;
   url = environment.url;
-  
+  isAuthenticated() 
+  {
+    return localStorage.getItem('userId')
+  }
+   private loggedInStatus = false
+
+   setLoggedIn(value:boolean)
+   {
+     this.loggedInStatus = value;
+   }
+ 
+   get isLoggedIn()
+   {
+     return this.loggedInStatus
+   }
+
   constructor(private http : HttpClient) { }
 
   public postRequest(options):any

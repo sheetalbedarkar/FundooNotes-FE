@@ -22,7 +22,8 @@
                     <button mat-icon-button>
                         <mat-icon>search</mat-icon>
                     </button>
-                    <input mat-input class="searchInput" placeholder="Search">
+                    <input mat-input class="searchInput" placeholder="Search" [(ngModel)]="noteData.title"
+                    (input)="onSearchChange($event.target.value)" >
                 </mat-card>
             </div>
 
@@ -33,14 +34,18 @@
                     </button>
                 </div>
 
-                <div> <button mat-icon-button matTooltip="list view">
-                    <mat-icon>view_agenda</mat-icon>
+                <div *ngIf="value==true"> <button mat-icon-button matTooltip="list view" (click)="toggle()">
+                    <mat-icon><img src="../../../assets/list.svg"></mat-icon>
+                    </button>
+                </div>
+                <div *ngIf="value==false"> <button mat-icon-button matTooltip="grid view" (click)="toggle1()">
+                    <mat-icon><img src="../../../assets/grid.svg"></mat-icon>
                     </button>
                 </div>
 
                 <div>
                     <button mat-icon-button matTooltip="setting">
-                        <mat-icon>settings</mat-icon>
+                        <mat-icon>settings_outline</mat-icon>
                     </button>
                 </div>
         
@@ -94,8 +99,8 @@
                 </div>
 
                 <div>
-                    <button mat-button style="width:100%">
-                        <mat-icon>notifications</mat-icon>
+                    <button mat-button style="width:100%" (click) = "remainder()">
+                        <mat-icon>notifications_outline</mat-icon>
                         <span style="margin:20%"> Reminders</span>
                     </button>
                 </div>
@@ -110,7 +115,7 @@
                 <div>
                         <div *ngFor="let label of labels">
                           <button mat-button style="width:100%">
-                            <mat-icon>label</mat-icon>
+                            <mat-icon>label_outline</mat-icon>
                             <span style="margin:20%">
                               {{label.label}}
                             </span>
@@ -121,7 +126,7 @@
 
                 <div>
                     <button mat-button style="width:100%" (click)="opendialogLabel(items)">
-                        <mat-icon>label</mat-icon>
+                        <mat-icon>edit_outline</mat-icon>
                         <span style="margin:20%"> Edit Labels</span>
                     </button>
                 </div>
@@ -132,14 +137,14 @@
 
                 <div>
                     <button mat-button style="width:100%" (click) = "archive()">
-                        <mat-icon>archive</mat-icon>
+                        <mat-icon>archive_outline</mat-icon>
                         <span style="margin:27%">Archive</span>
                     </button>
                 </div>
 
                 <div>
                     <button mat-button style="width:100%" (click) = "trash()">
-                        <mat-icon>delete</mat-icon>
+                        <mat-icon>delete_outline</mat-icon>
                         <span style="margin:30%">Trash</span>
                     </button>
                 </div>

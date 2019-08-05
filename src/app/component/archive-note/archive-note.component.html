@@ -4,7 +4,7 @@
 <div fxLayout="row-wrap" fxLayoutAlign="space-around start" class="mainDiv">
 
   <div *ngFor="let items of notes">
-    <mat-card class="noteHover">
+    <mat-card class="noteHover" [ngStyle] = "{'background-color' : items.color}">
 
       <div fxLayout="row" fxLayoutAlign="space-between center">
         <div class="titleInput" (click)="openDialog(items)">
@@ -65,13 +65,12 @@
 
         <div>
           <mat-menu #colorMenu="matMenu" fxFlex="80" [overlapTrigger]="false">
-            <div *ngFor="let color of colorCodes" fxLayout="row wrap">
-              <div *ngFor="let iteam of color">
-                <button matbutton (click)="changeColor(color.name,items.noteId)" mat-mini-fab
-                  [ngStyle]="{ 'background-color': iteam.name }">
-                </button>
+              <div *ngFor="let color of colorCodes" fxLayout="row wrap">
+                <div *ngFor="let iteam of color">
+                  <button matbutton [ngStyle] = "{'background-color' : iteam.name}" (click) = "changeColor(iteam.name, items)" mat-mini-fab>
+                  </button>
+                </div>
               </div>
-            </div>
           </mat-menu>
         </div>
 

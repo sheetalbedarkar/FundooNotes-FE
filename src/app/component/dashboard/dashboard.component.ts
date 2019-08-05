@@ -3,6 +3,9 @@ import { Router } from '@angular/router';
 import { LabelService } from '../../core/service/label.service';
 import { MatDialog } from '@angular/material';
 import { DialogBoxLabelComponent } from '../../component/dialog-box-label/dialog-box-label.component';
+import { ViewService } from '../../core/service/view.service';
+import { NoteService } from 'src/app/core/service/note.service';
+import { noteModel } from '../../core/model/noteModel';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,9 +17,14 @@ export class DashboardComponent implements OnInit {
   constructor(private router: Router,
     private matDialog: MatDialog,
     private labelService: LabelService,
-    private dialog: MatDialog) { }
+    private noteService: NoteService,
+    private dialog: MatDialog,
+    private view:ViewService) { }
 
+    noteData: noteModel = new noteModel();
+  notes: any[];
   labels: any[];
+  value:boolean=true;
 
   ngOnInit() {
     this.getLabel();
@@ -43,6 +51,11 @@ export class DashboardComponent implements OnInit {
 
   trash() {
     this.router.navigate(['dashboard', 'getAllTrashNotes']);
+  }
+
+  remainder()
+  {
+    this.router.navigate(['dashboard', 'getAllRemainderNotes'])
   }
 
   refresh(): void {
@@ -77,5 +90,27 @@ export class DashboardComponent implements OnInit {
     });
 
   }
+  toggle(){
+  this.value=false;
+  this.view.gridview(this.value);
+  }
+  toggle1(){
+    this.value=true;
+    this.view.gridview(this.toggle);
+      }
 
+      onSearchChange(title: string) {
+       var obj={
+        "title"  : title
+        }
+        console.log("search is message that:" , title)
+  this.noteService.searchTitle("note/searchNoteWithTitle", obj.title).subscribe(
+        (response: any) => {
+        
+        this.notes = response;
+        console.log("response is", response);
+        this.router.navigate(['/dashboard']);
+        }
+        );
+        }
 }

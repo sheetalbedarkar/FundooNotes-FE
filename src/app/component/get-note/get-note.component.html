@@ -1,13 +1,14 @@
 <div>
   <h3 style="color: gray;">NOTES</h3>
 </div>
-  <div fxLayout="row-wrap" fxLayoutAlign="space-around start" class = "mainDiv">
+<div fxLayout="{{direction}} {{direction1}}" fxLayoutAlign="space-around {{allign}}" class="mainDiv" fxFlex="90">
 
-      <div *ngFor="let items of notes">
-      <mat-card class="noteHover">
-        
-        <div fxLayout="row" fxLayoutAlign="space-between center" >
-          <div class = "titleInput" (click)="openDialog(items)">
+  <div *ngFor="let items of notes">
+    <div [ngClass]=" direction =='column' ? 'matpad3':'matpad'">
+      <mat-card class="noteHover" [ngStyle]="{'background-color' : items.color}">
+
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+          <div class="titleInput" (click)="openDialog(items)">
             {{items.title}}
           </div>
 
@@ -22,11 +23,25 @@
           {{items.content}}
         </div>
 
+          <div *ngIf="items.reminder">
+              <mat-chip-list>
+                  <mat-chip style="font-size: 14px">{{items.reminder | date : 'MMM d , y , h : mm a'}}
+                      <button mat-icon-button matTooltip="remove reminder">
+                        <mat-icon matSuffix (click) = "deleteReminder(items)">close</mat-icon>
+                      </button>
+                  </mat-chip> 
+              </mat-chip-list>
+          </div>
+
+        <!-- <div *ngFor="let item of notes">
+          <app-labels [notes] = "items.label"></app-labels>
+        </div> -->
+
         <div fxLayout="row" fxLayoutAlign="space-around end">
-          <div class = "noteIcon">
+          <div class="noteIcon">
 
             <button mat-icon-button matTooltip="Remind me">
-              <mat-icon class="mat-color ">add_alert</mat-icon>
+              <mat-icon class="mat-color " [matMenuTriggerFor]="remainder">add_alert</mat-icon>
             </button>
 
             <button mat-icon-button matTooltip="collaborator">
@@ -56,7 +71,7 @@
                   <span>Delete Note</span>
                 </button>
 
-                <button mat-menu-item>
+                <button mat-menu-item [matMenuTriggerFor]="labelTrigger">
                   <span>Add Label</span>
                 </button>
               </mat-menu>
@@ -64,20 +79,73 @@
           </div>
 
           <div>
+            <mat-menu #labelTrigger="matMenu">
+              <div>Label note</div>
+              <div *ngFor="let label of labels">
+                <mat-checkbox class="addlabel" (click)="addLabel(labels, items)">{{label.label}}
+                </mat-checkbox>
+              </div>
+            </mat-menu>
+          </div>
+
+          <div>
             <mat-menu #colorMenu="matMenu" fxFlex="80" [overlapTrigger]="false">
-                <div *ngFor="let color of colorCodes" fxLayout="row wrap">
-                  <div *ngFor="let iteam of color">
-                    <button matbutton (click)="changeColor(color.name,items.noteId)" mat-mini-fab [ngStyle]="{ 'background-color': iteam.name }">
-                    </button>
-                  </div>
+              <div *ngFor="let color of colorCodes" fxLayout="row wrap">
+                <div *ngFor="let iteam of color">
+                  <button matbutton [ngStyle]="{'background-color' : iteam.name}"
+                    (click)="changeColor(iteam.name, items)" mat-mini-fab>
+                  </button>
                 </div>
+              </div>
+            </mat-menu>
+          </div>
+
+          <div  fxLayout="row" fxLayoutAlign="space-around start" >
+            <mat-menu #remainder="matMenu">
+              <div class="reminderMain">
+                <div class="reminderTittle">Reminder:</div>
+
+                <div (click)='setToday(items)' class="reminderInside">Later Today
+                  <span style="margin-left: 44%">8:00</span>
+                </div>
+                <mat-divider></mat-divider>
+
+                <div (click)='setTomorrow(items)' class="reminderInside">Tomorrow
+                  <span style="margin-left: 49%">8:00</span>
+                </div>
+                <mat-divider></mat-divider>
+
+                <div (click)='setWeekly(items)' class="reminderInside">Weekly
+                  <span style="margin-left: 58%">8:00</span>
+                </div>
+                <mat-divider></mat-divider>
+
+                <div>
+
+                  <div (click)='setPickTime()' class="reminderInside">
+                    <mat-icon>access_time</mat-icon>
+                    <span> Pick A Date </span>
+                  </div>
+
+                  <div>
+                    <mat-form-field class="reminderInside">
+                      <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                    <div (click)="setPickedDate(items)">
+                      <mat-icon>done</mat-icon>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
             </mat-menu>
           </div>
 
         </div>
-        
+
       </mat-card>
     </div>
   </div>
-
- 
+</div>

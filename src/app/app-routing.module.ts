@@ -13,8 +13,9 @@ import { TrashNoteComponent } from './component/trash-note/trash-note.component'
 import { ArchiveNoteComponent } from './component/archive-note/archive-note.component';
 import { DialogBoxLabelComponent } from './component/dialog-box-label/dialog-box-label.component';
 import { AddLabelComponent } from './component/add-label/add-label.component';
-
-
+import { LabelsComponent } from './component/labels/labels.component';
+import { RemainderComponent } from './component/remainder/remainder.component'
+import {AuthguardService } from './core/service/authguard.service';
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'register', component: RegisterComponent },
@@ -25,16 +26,19 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'createNote', component: AddNoteComponent },
   { path: 'getAllNotes', component: GetNoteComponent },
-  // {path : 'editNote', component : DialogBoxComponent},
+  { path : 'getAllRemainderNotes', component : RemainderComponent},
+  { path: 'label' , component: LabelsComponent},  
   { path: 'getAllTrashNotes', component: TrashNoteComponent },
   { path: 'getAllArchiveNotes', component: ArchiveNoteComponent },
   {
     path: 'dashboard', component: DashboardComponent,
+    canActivate: [AuthguardService],
     children: [
       { path: 'getAllNotes', component: GetNoteComponent },
       { path: 'getAllTrashNotes', component: TrashNoteComponent },
       { path: 'getAllArchiveNotes', component: ArchiveNoteComponent },
       { path: 'editNote', component: DialogBoxComponent },
+      { path : 'getAllRemainderNotes', component : RemainderComponent},
     ]
   },
   { path: 'createLabel', component: DialogBoxLabelComponent },

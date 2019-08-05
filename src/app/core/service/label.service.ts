@@ -47,4 +47,14 @@ export class LabelService {
     return this.httpService.putRequest(option)
   }
 
+  addLabel(url, data)
+  {
+    var option = 
+    {
+      url : url,
+      data : data
+    }
+    return this.httpService.putRequest(option)
+  }
+
 }

@@ -32,7 +32,11 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { AddLabelComponent } from './component/add-label/add-label.component';
 import { DialogBoxLabelComponent } from './component/dialog-box-label/dialog-box-label.component';
 import {MatChipsModule} from '@angular/material/chips';
-
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { LabelsComponent } from './component/labels/labels.component';
+import { MatNativeDateModule } from '@angular/material';
+import { RemainderComponent } from './component/remainder/remainder.component';
+import {AuthguardService } from './core/service/authguard.service';
 
 @NgModule({
   declarations: [
@@ -49,7 +53,9 @@ import {MatChipsModule} from '@angular/material/chips';
     TrashNoteComponent,
     DialogBoxComponent,
     AddLabelComponent,
-    DialogBoxLabelComponent
+    DialogBoxLabelComponent,
+    LabelsComponent,
+    RemainderComponent
  
   ],
   imports: [
@@ -73,9 +79,11 @@ import {MatChipsModule} from '@angular/material/chips';
     MatDatepickerModule,
     MatDialogModule,
     MatTooltipModule,
-    MatChipsModule
+    MatChipsModule,
+    MatCheckboxModule,
+    MatNativeDateModule
   ],
-  providers: [],
+  providers: [AuthguardService],
   entryComponents: [DialogBoxComponent],
   bootstrap: [AppComponent]
 })

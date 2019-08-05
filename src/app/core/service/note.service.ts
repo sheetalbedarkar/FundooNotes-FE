@@ -85,6 +85,54 @@ export class NoteService {
     return this.httpService.deleteNote(option);
   }
 
+  postColor(url, data)
+  {
+    var option =
+    {
+      url : url,
+      data : data
+    }
+    return this.httpService.putRequest(option)
+  }
+
+  setReminder(url, data)
+  {
+    var option = 
+    {
+      url : url,
+      data : data
+    }
+    return this.httpService.postNote(option)
+  }
+
+  deleteReminder(url, data)
+  {
+    var option = 
+    {
+      url : url,
+      data : data
+    }
+    return this.httpService.putRequest(option)
+  }
+
+  getAllRemainderNotes(url)
+  {
+    var option = 
+    {
+      url : url
+    }
+    return this.httpService.getNote(option)
+  }
+
+  searchTitle(url, data)
+  {
+    var option = 
+    {
+      url : url,
+      data : data
+    }
+    return this.httpService.getNote(option)
+  }
 
 }
 
