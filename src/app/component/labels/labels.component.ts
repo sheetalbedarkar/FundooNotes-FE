@@ -11,5 +11,6 @@ export class LabelsComponent implements OnInit {
 
   ngOnInit() {
   }
-@Input() notes : any;
+  @Input() noteData: [];
+  
 }

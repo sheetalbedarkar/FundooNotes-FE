@@ -19,12 +19,12 @@ export class DashboardComponent implements OnInit {
     private labelService: LabelService,
     private noteService: NoteService,
     private dialog: MatDialog,
-    private view:ViewService) { }
+    private view: ViewService) { }
 
-    noteData: noteModel = new noteModel();
+  noteData: noteModel = new noteModel();
   notes: any[];
   labels: any[];
-  value:boolean=true;
+  value: boolean = true;
 
   ngOnInit() {
     this.getLabel();
@@ -35,35 +35,57 @@ export class DashboardComponent implements OnInit {
   email = localStorage.getItem("email");
 
   /** 
-   * logout function to clear localStroage
+   * @description logout function to clear localStroage
    */
-  logout() {
+  logout() 
+  {
     localStorage.clear()
   }
 
-  note() {
-    this.router.navigate(['dashboard', 'getAllNotes']);
-  }
-
-  archive() {
-    this.router.navigate(['dashboard', 'getAllArchiveNotes']);
-  }
-
-  trash() {
-    this.router.navigate(['dashboard', 'getAllTrashNotes']);
-  }
-
-  remainder()
+  /**
+   * @description Routing from dashboard to get all notes
+   */
+  note() 
   {
-    this.router.navigate(['dashboard', 'getAllRemainderNotes'])
+    this.router.navigate(['u', 'notes']);
   }
 
+  /**
+   * @description Routing from dashboard to get all archive notes
+   */
+  archive() 
+  {
+    this.router.navigate(['u', 'archive']);
+  }
+
+  /**
+   * @description Routing from dashboard to get all trash notes
+   */
+  trash() 
+  {
+    this.router.navigate(['u', 'trash']);
+  }
+
+  /**
+   * @description Routing from dashboard to get all remainder notes
+   */
+  remainder() 
+  {
+    this.router.navigate(['u', 'remainder'])
+  }
+
+  /**
+   * @description refresh the page
+   */
   refresh(): void {
     window.location.reload();
   }
 
+  /**
+   * @description to get all labels
+   */
   getLabel() {
-    this.labelService.getLabel('label/getLabel').subscribe(
+    this.labelService.getLabel().subscribe(
       (response: any) => {
         console.log("RESPONSE ::::::::", response)
         this.labels = response.result
@@ -71,46 +93,55 @@ export class DashboardComponent implements OnInit {
     )
   }
 
+  /**
+   * @description dialog box to edit and delete label
+   * @param items
+   */
   opendialogLabel(items) {
-
-    // console.log("ITEMS ::::::",labels)
     const dialogRef = this.dialog.open(DialogBoxLabelComponent,
       {
-
         width: '500px',
-        // height: '190px',
-        // data: {
-        //   label: label.label,
-        //   _id: label._id
-        // }
       }
     );
     dialogRef.afterClosed().subscribe(result => {
-      // console.log(`dialog result:${result}`);
     });
+  }
 
+  /**
+   * @description toggle of list view
+   */
+  toggle() 
+  {
+    this.value = false;
+    this.view.gridview(this.value);
   }
-  toggle(){
-  this.value=false;
-  this.view.gridview(this.value);
-  }
-  toggle1(){
-    this.value=true;
+
+   /**
+   * @description toggle of grid view
+   */
+  toggle1() 
+  {
+    this.value = true;
     this.view.gridview(this.toggle);
-      }
+  }
 
-      onSearchChange(title: string) {
-       var obj={
-        "title"  : title
-        }
-        console.log("search is message that:" , title)
-  this.noteService.searchTitle("note/searchNoteWithTitle", obj.title).subscribe(
-        (response: any) => {
-        
+  
+  onSearchChange(title: string) {
+    var obj = {
+      "title": title
+    }
+    console.log("search is message that:", title)
+    this.noteService.searchTitle(obj.title).subscribe(
+      (response: any) => {
+console.log("response",response)
         this.notes = response;
         console.log("response is", response);
-        this.router.navigate(['/dashboard']);
-        }
-        );
-        }
+        this.router.navigate(['/u']);
+      }
+    );
+  
+  }
+  profile(){
+    this.router.navigate(['/profile']);
+  }
 }

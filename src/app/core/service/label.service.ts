@@ -8,50 +8,50 @@ export class LabelService {
 
   constructor(private httpService: HttpService) { }
 
-  createLabel(url, data)
+  createLabel(data)
   {
     var option = 
     {
-      url : url,
+      url : 'label/createLabel',
       data : data
     }
     return this.httpService.postNote(option);
   }
 
-  getLabel(url)
+  getLabel()
   {
     var option = 
     {
-      url : url
+      url : 'label/getLabel'
     }
     return this.httpService.getNote(option)
   }
 
-  updateLabel(url, data)
+  updateLabel(noteId, data)
   {
     var option = 
     {
-      url : url,
+      url : 'label/updateLabel' + noteId,
       data : data
     }
     return this.httpService.putRequest(option)
   }
 
-  deleteLabel(url, data)
+  deleteLabel(noteId, data)
   {
     var option = 
     {
-      url : url,
+      url : 'label/deleteLabel' + noteId,
       data : data
     }
     return this.httpService.putRequest(option)
   }
 
-  addLabel(url, data)
+  addLabel(data)
   {
     var option = 
     {
-      url : url,
+      url : 'note/addLabel',
       data : data
     }
     return this.httpService.putRequest(option)

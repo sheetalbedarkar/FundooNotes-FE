@@ -6,26 +6,27 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogBoxComponent } from '../../component/dialog-box/dialog-box.component';
 import { LabelService } from '../../core/service/label.service';
 import { ViewService } from '../../core/service/view.service';
+
 @Component({
   selector: 'app-get-note',
   templateUrl: './get-note.component.html',
   styleUrls: ['./get-note.component.scss']
 })
+
 export class GetNoteComponent implements OnInit {
   @Input() noteData: any
   public dialogRef: any
   note: noteModel = new noteModel();
   date: Date = new Date();
   notes: any[];
+  notee:any
   trash: Boolean;
   isArchive: Boolean;
   labels: any[];
   color: any[];
   views: any;
   allign: string = '';
-  // wrap:string='wrap';
   direction1: string = 'wrap';
-
   direction: string = "row";
   res1: unknown;
 
@@ -35,14 +36,13 @@ export class GetNoteComponent implements OnInit {
     public matDialog: MatDialog,
     private view: ViewService,
     private labelService: LabelService,
-
   ) { }
 
   ngOnInit() {
     this.getNote();
     this.getLabel();
-    this.view.getView().subscribe(
 
+    this.view.getView().subscribe(
       (res) => {
         this.views = res;
         this.direction = this.views.data;
@@ -50,16 +50,12 @@ export class GetNoteComponent implements OnInit {
           this.direction1 = 'wrap';
           this.allign = ''
           console.log("wrap", this.direction1);
-          // this.searchText=this.masterName
-
         }
         else {
           this.direction1 = ''
           this.allign = 'center'
           console.log("no wrap", this.direction1);
-          // this.searchText=this.masterName
         }
-        // this.toggle=this.views.data1;
         console.log(this.direction);
       });
   }
@@ -87,18 +83,20 @@ export class GetNoteComponent implements OnInit {
     ]
 
   /**
-   * function to display all notes
+   * @description function to display all notes
    */
   getNote() {
-    this.noteService.getAllNotes('note/getAllNotes').subscribe(
+    this.noteService.getAllNotes().subscribe(
       (response: any) => {
+        console.log("response ------>",response)
         this.notes = response.result
+        this.notee = response.result.label
       }
     )
   }
 
   /**
-   * Open Dialoge box function to edit note
+   * @description Open Dialoge box function to edit note
    * @param items
    */
   openDialog(items: any) {
@@ -117,18 +115,17 @@ export class GetNoteComponent implements OnInit {
   }
 
   /**
-   * onClick function for trash note
+   * @description onClick function for trash note
    * @param items 
    * @param $event 
    */
-  trashNote(items, $event) {
-    this.trash = $event
+  trashNote(items) {
     var data = {
       "isTrash": true,
       "id": items._id
     }
     console.log("TRASHNOTE noteId :::::::", data)
-    this.noteService.trashNote('note/trashNote/' + items.id, data).subscribe(
+    this.noteService.trashNote(items.id, data).subscribe(
       (response: any) => {
         this.snackBar.open(
           "Note moved to trash",
@@ -147,18 +144,17 @@ export class GetNoteComponent implements OnInit {
   }
 
   /**
-   * onClick function to archive note
+   * @description onClick function to archive note
    * @param items 
    * @param $event 
    */
-  onArchive(items, $event) {
-    this.isArchive = $event
+  onArchive(items) {
     var data = {
       "isArchive": true,
       "id": items._id
     }
     console.log("isArchive noteId :::::::", data)
-    this.noteService.archiveNote('note/archiveNote/' + items.id, data).subscribe(
+    this.noteService.archiveNote(items.id, data).subscribe(
       (response: any) => {
         this.snackBar.open(
           "Note is archived",
@@ -175,9 +171,11 @@ export class GetNoteComponent implements OnInit {
     )
   }
 
-
+/**
+ * @description function to get all labels
+ */
   getLabel() {
-    this.labelService.getLabel('label/getLabel').subscribe(
+    this.labelService.getLabel().subscribe(
       (response: any) => {
         console.log("RESPONSE ::::::::", response)
         this.labels = response.result
@@ -185,28 +183,29 @@ export class GetNoteComponent implements OnInit {
     )
   }
 
-
+/**
+ * @description function to add label
+ * @param labels 
+ * @param items 
+ */
   addLabel(labels, items) {
-    console.log("Add Label to Note");
-    console.log("NoteId", items);
-    console.log("labelId", labels);
-    var data = {
+    var data = 
+    {
       "id": items._id,
       "label": labels[0]._id
     }
-    console.log("data ::::", data)
-    this.labelService.addLabel("note/addLabel", data).subscribe(
-      (response: any) => {
 
-        console.log("label is added to note");
+    this.labelService.addLabel(data).subscribe(
+      (response: any) => 
+      {
         this.snackBar.open(
           "label is added to note successfully",
           "undo",
           { duration: 2500 }
         )
       },
-      error => {
-        console.log("label add failed");
+      error => 
+      {
         this.snackBar.open(
           "label addtion failed",
           "undo",
@@ -216,21 +215,22 @@ export class GetNoteComponent implements OnInit {
     )
   }
 
-
-  changeColor(color, items) {
-    console.log("items", items)
-    // this.color = $event
-    console.log("get color", color);
-    var data = {
+/**
+ * @description function to set color
+ * @param color 
+ * @param items 
+ */
+  changeColor(color, items) 
+  {
+    var data = 
+    {
       "color": color,
       "id": items._id
     }
-    console.log("jdfdhfhd", data);
 
-    this.noteService.postColor('note/setColor', data).subscribe(
-      (response: any) => {
-        console.log(response);
-
+    this.noteService.postColor(data).subscribe(
+      (response: any) => 
+      {
         this.getNote();
         this.snackBar.open(
           'note color updated Successfully..',
@@ -238,19 +238,22 @@ export class GetNoteComponent implements OnInit {
           { duration: 1000 });
 
       },
-      error => {
-        console.log(error);
+      error => 
+      {
         this.snackBar.open(
           'note color not updated',
           'End now',
           { duration: 1000 });
-      })
+      }
+    )
   }
 
-  setToday(data) {
-
-    console.log(data);
-    console.log("Todays date is been set ")
+  /**
+   * @description function to set today's remainder
+   * @param data 
+   */
+  setToday(data) 
+  {
     const date = new Date().toDateString();
     console.log("Date added:" + date)
     let reminderDate = date + ' 08:00:00';
@@ -260,7 +263,7 @@ export class GetNoteComponent implements OnInit {
       "_id" : data._id,
       "reminder" : reminderDate
     }
-    this.noteService.setReminder("note/reminderNote/" + data1._id, data1).subscribe(
+    this.noteService.setReminder(data1._id, data1).subscribe(
       (response: any) => 
       {
         console.log("Note is remaindered successfully")
@@ -269,11 +272,13 @@ export class GetNoteComponent implements OnInit {
 
   }
 
+  /**
+   * @description function to set tomorrow's remainder
+   * @param data 
+   */
   setTomorrow(data) {
     console.log(data);
     console.log("Tomorrow date is been set ")
-    //var date = new Date();
-
     this.date.setDate(this.date.getDate() + 1);
     console.log(this.date.toString());
     var data1 =
@@ -281,7 +286,7 @@ export class GetNoteComponent implements OnInit {
       "_id" : data._id,
       "reminder" : this.date
     }
-    this.noteService.setReminder("note/reminderNote/" + data1._id, data1).subscribe(
+    this.noteService.setReminder(data1._id, data1).subscribe(
       (response: any) => 
       {
         console.log("Note is reminder successful");
@@ -290,11 +295,12 @@ export class GetNoteComponent implements OnInit {
     )
   }
 
-
+/**
+ * @description function to set weekly remainder
+ * @param data 
+ */
   setWeekly(data) 
   {
-    console.log(data.noteId);
-    console.log("After week date is been set ")
     this.date.setDate(this.date.getDate() + 7);
     console.log(this.date.toString());
     var data1 =
@@ -302,7 +308,7 @@ export class GetNoteComponent implements OnInit {
       "_id" : data._id,
       "reminder" : this.date
     }
-    this.noteService.setReminder("note/reminderNote/" + data1._id, data1).subscribe(
+    this.noteService.setReminder(data1._id, data1).subscribe(
       (response: any) => 
       {
         console.log("Note is reminder successful");
@@ -311,14 +317,18 @@ export class GetNoteComponent implements OnInit {
     )
   }
 
+  /**
+   * @description function to delete remainder
+   * @param items 
+   */
   deleteReminder(items)
   {
     var data1 =
     {
       "_id" : items._id,
     }
-    console.log("data1",data1)
-    this.noteService.deleteReminder("note/deleteReminder", data1).subscribe(
+
+    this.noteService.deleteReminder(data1).subscribe(
       (response: any) => 
       {
         console.log("reminder is deleted successful");

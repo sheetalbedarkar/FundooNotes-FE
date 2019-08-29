@@ -8,6 +8,7 @@ import { NoteService } from 'src/app/core/service/note.service';
   templateUrl: './add-note.component.html',
   styleUrls: ['./add-note.component.scss']
 })
+
 export class AddNoteComponent implements OnInit {
   private popup: boolean;
 note : noteModel = new noteModel();
@@ -21,13 +22,13 @@ note : noteModel = new noteModel();
   }
   
 /** 
- * Onclick function for add Note
+ * @description Onclick function for add Note
  */
   addNote()
   {
     this.popup = false;
     if (this.note.title != null) {
-      this.noteService.createNote('note/createNote',this.note).subscribe(
+      this.noteService.createNote(this.note).subscribe(
         (response: any) => {
           this.snackBar.open(
             "Note is created Successfully", "",

@@ -10,6 +10,7 @@ import { UserService } from 'src/app/core/service/user.service';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
+
 export class RegisterComponent implements OnInit {
   getErrorMessage = '';
   user: UserModel = new UserModel();
@@ -18,6 +19,7 @@ export class RegisterComponent implements OnInit {
   email = new FormControl(this.user.email, [Validators.required, Validators.pattern('^[a-zA-Z0-9._]+@[a-zA-Z]+.[a-zA-Z]+$')])
   password = new FormControl(this.user.password, [Validators.required, Validators.minLength(6)])
   cpassword = new FormControl(this.user.cpassword, [Validators.required, Validators.minLength(6)])
+  
   constructor(public formBuilder: FormBuilder, 
     private snackBar: MatSnackBar, 
     private route: ActivatedRoute, 
@@ -26,6 +28,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
   }
+
   firstNameError() {
     return this.firstname.hasError('required') ? 'First Name is require' : '';
   }
@@ -36,8 +39,7 @@ export class RegisterComponent implements OnInit {
 
   emailError() {
     return this.email.hasError('required') ? 'Email Id is require' :
-      this.email.hasError('pattern') ? 'Email Id is Invalid, please recheck once' :
-        '';
+      this.email.hasError('pattern') ? 'Email Id is Invalid, please recheck once' : '';
   }
 
   passwordError() {
@@ -51,7 +53,7 @@ export class RegisterComponent implements OnInit {
   }
 
 /**
- * onSubmit function to register the user
+ * @description onSubmit function to register the user
  */  
   register() {
     this.user={
@@ -70,7 +72,7 @@ export class RegisterComponent implements OnInit {
         this.getErrorMessage = "Password and Confirm Password not Matching";
         return;
       }
-      this.userService.register('register', this.user).subscribe(
+      this.userService.register(this.user).subscribe(
         response => 
         {
           this.snackBar.open(

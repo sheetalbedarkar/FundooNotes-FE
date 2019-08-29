@@ -8,127 +8,127 @@ export class NoteService {
 
   constructor(private httpService: HttpService) { }
 
-  createNote(url, data)
+  createNote(data)
   {
     var option = 
     {
-      url : url,
+      url : 'note/createNote',
       data : data
     }
     return this.httpService.postNote(option);
   }
 
-  getAllNotes(url)
+  getAllNotes()
   {
     var option = 
     {
-      url : url
+      url : 'note/getAllNotes'
     }
     return this.httpService.getNote(option);
   }
 
-  updateNote(url, data)
+  updateNote(noteId, data)
   {
     var option = 
     {
-      url : url,
+      url : 'note/updateNote/' + noteId,
       data : data
     }
     return this.httpService.putRequest(option)
   }
 
-  public trashNote(url, data)
+  public trashNote(noteId, data)
   {
     var option = 
       {
-        url : url,
+        url : 'note/trashNote/' + noteId,
         data : data
       }
       return this.httpService.postNote(option)
   }
 
-  public archiveNote(url, data)
+  public archiveNote(noteId, data)
   {
     var option = 
       {
-        url : url,
+        url : 'note/archiveNote/' + noteId,
         data : data
       }
       return this.httpService.postNote(option)
   }
 
-  getAllTrashedNotes(url)
+  getAllTrashedNotes()
   {
     var option = 
     {
-      url : url
+      url : 'note/getAllTrashNotes'
     }
     return this.httpService.getNote(option);
   }
 
-  getAllArchiveNotes(url)
+  getAllArchiveNotes()
   {
     var option = 
     {
-      url : url
+      url : 'note/getAllArchiveNotes'
     }
     return this.httpService.getNote(option);
   }
 
-  deleteNote(url, data)
+  deleteNote(noteId, data)
   {
     var option = 
     {
-      url : url,
+      url : 'note/deleteNote/' + noteId,
       data : data
     }
     return this.httpService.deleteNote(option);
   }
 
-  postColor(url, data)
+  postColor(data)
   {
     var option =
     {
-      url : url,
+      url : 'note/setColor',
       data : data
     }
     return this.httpService.putRequest(option)
   }
 
-  setReminder(url, data)
+  setReminder(noteId, data)
   {
     var option = 
     {
-      url : url,
+      url : 'note/reminderNote/' + noteId,
       data : data
     }
     return this.httpService.postNote(option)
   }
 
-  deleteReminder(url, data)
+  deleteReminder(data)
   {
     var option = 
     {
-      url : url,
+      url : 'note/deleteReminder',
       data : data
     }
     return this.httpService.putRequest(option)
   }
 
-  getAllRemainderNotes(url)
+  getAllRemainderNotes()
   {
     var option = 
     {
-      url : url
+      url : 'note/getAllRemainderNotes'
     }
     return this.httpService.getNote(option)
   }
 
-  searchTitle(url, data)
+  searchTitle(data)
   {
     var option = 
     {
-      url : url,
+      url : 'note/searchNoteWithTitle',
       data : data
     }
     return this.httpService.getNote(option)

@@ -21,7 +21,7 @@ export class VerifyUserComponent implements OnInit {
   ngOnInit() {
     this.data = "";
     localStorage.setItem('token', this.accesstoken)
-    this.userService.verifyUser('isVerified/' + this.accesstoken, this.data).subscribe(
+    this.userService.verifyUser(this.accesstoken, this.data).subscribe(
       response => 
       {
         console.log(response);

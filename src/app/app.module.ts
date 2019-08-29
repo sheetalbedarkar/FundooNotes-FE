@@ -37,6 +37,7 @@ import { LabelsComponent } from './component/labels/labels.component';
 import { MatNativeDateModule } from '@angular/material';
 import { RemainderComponent } from './component/remainder/remainder.component';
 import {AuthguardService } from './core/service/authguard.service';
+import { ProfilePicComponent } from './component/profile-pic/profile-pic.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import {AuthguardService } from './core/service/authguard.service';
     AddLabelComponent,
     DialogBoxLabelComponent,
     LabelsComponent,
-    RemainderComponent
+    RemainderComponent,
+    ProfilePicComponent
  
   ],
   imports: [
@@ -84,7 +86,7 @@ import {AuthguardService } from './core/service/authguard.service';
     MatNativeDateModule
   ],
   providers: [AuthguardService],
-  entryComponents: [DialogBoxComponent],
+  entryComponents: [DialogBoxComponent,DialogBoxLabelComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

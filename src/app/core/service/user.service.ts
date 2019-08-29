@@ -8,51 +8,53 @@ export class UserService {
 
   constructor(private httpService: HttpService) { }
 
-  register(url, data)
+  register(data)
   {
     var option = 
     {
-      url : url,
+      url : 'register',
       data : data
     }
     return this.httpService.postReq(option);
   }
 
-  verifyUser(url, data)
+  verifyUser(token, data)
   {
     var option = 
     {
-      url : url,
+      url : 'isVerified/' + token,
       data : data
     }
     return this.httpService.postRequest(option);
   }
 
-  login(url, data) {
-    var option = {
-      url: url,
+  login(data) 
+  {console.log(" data in usre",data);
+  
+    var option = 
+    {
+      url: 'login',
       data: data
     }
-    console.log(option);
-    
+    console.log("option",option);
     return this.httpService.postReq(option);
   }
 
-  forgetPassword(url, data)
+  forgetPassword(data)
   {
     var option = 
     {
-      url: url,
+      url: 'forgetPassword',
       data : data
     }
     return this.httpService.postReq(option);
   }
 
-  resetPassword(url, data)
+  resetPassword(token, data)
   {
     var option = 
     {
-      url : url,
+      url : 'resetPassword/' + token,
       data : data
     }
     return this.httpService.postRequest(option);

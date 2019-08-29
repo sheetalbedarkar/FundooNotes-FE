@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   email = new FormControl(this.user.email, [Validators.required, Validators.pattern('^[a-zA-Z0-9._]+@[a-zA-Z]+.[a-zA-Z]+$')])
   password = new FormControl(this.user.password, [Validators.required, Validators.minLength(6)])
   constructor(public formBuilder: FormBuilder, private snackBar: MatSnackBar, private route: ActivatedRoute, private router: Router, private userService: UserService) { }
-   accesstoken = this.route.snapshot.paramMap.get('token')
+  accesstoken = this.route.snapshot.paramMap.get('token')
   ngOnInit() {
   }
 
@@ -32,41 +32,39 @@ export class LoginComponent implements OnInit {
   }
 
   /**
-   * onSubmit function to login the user
+   * @description onSubmit function to login the user
    * @param user
    */
   login(user) {
-     user = {
-      email:this.email.value,
-      password:this.password.value
+    user = {
+      email: this.email.value,
+      password: this.password.value
     }
-    this.userService.login('login',user).subscribe(
+    console.log(" user in login ts", user);
 
-      response => 
-      {
-        console.log("RESPONSE",response)
-        var userId = response.data[0]._id;
-        var firstName = response.data[0].firstname;
-        var lastName = response.data[0].lastname;
-        var email = response.data[0].email
-        var token=response.token
+    this.userService.login(user).subscribe(response => {
+      console.log("RESPONSE", response)
+      var userId = response.data[0]._id;
+      var firstName = response.data[0].firstname;
+      var lastName = response.data[0].lastname;
+      var email = response.data[0].email
+      var token = response.token
 
-        localStorage.setItem('token',token)
-        localStorage.setItem("userId", userId);
-        localStorage.setItem("firstName", firstName);
-        localStorage.setItem("lastName", lastName);
-        localStorage.setItem("email", email);
-        this.snackBar.open(
-          'login Successful', 
-          'End now', 
-          { duration: 1000 });
-        this.router.navigateByUrl('dashboard');
-      },
+      localStorage.setItem('token', token)
+      localStorage.setItem("userId", userId);
+      localStorage.setItem("firstName", firstName);
+      localStorage.setItem("lastName", lastName);
+      localStorage.setItem("email", email);
+      this.snackBar.open(
+        'login Successful',
+        'End now',
+        { duration: 1000 });
+      this.router.navigateByUrl('/u');
+    },
 
-      error => 
-      {
+      error => {
         console.log(error);
-        
+
         this.snackBar.open(
           "login Failed",
           "undo",

@@ -39,10 +39,10 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   /**
-   * onClick function for reset password
+   * @description onClick function for reset password
    */
   resetPassword() {
-    this.userService.resetPassword('resetPassword/' + this.accesstoken, this.data).subscribe(
+    this.userService.resetPassword(this.accesstoken, this.data).subscribe(
       response => {
         this.snackBar.open(
           'password reset Successfully',

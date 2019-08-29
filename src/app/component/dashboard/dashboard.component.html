@@ -56,10 +56,16 @@
                 </div>
 
                 <div>
-                    <button mat-icon-button matTooltip="profile"  [matMenuTriggerFor]="accountmenu">
-                        <mat-icon>account_circle</mat-icon>
-                    </button>
+                    <!-- <button mat-icon-button matTooltip="profile"  [matMenuTriggerFor]="accountmenu"> -->
+                        <button mat-mini-fab [matMenuTriggerFor]="accountmenu"></button>
+                        <!-- <mat-icon>account_circle</mat-icon> -->
+                    <!-- </button> -->
                 </div>
+                <!-- <button mat-button [matMenuTriggerFor]="menu">Menu</button> -->
+<!-- <mat-menu #menu="matMenu">
+  <button mat-menu-item>Item 1</button>
+  <button mat-menu-item>Item 2</button>
+</mat-menu> -->
 
             </div>
         </mat-toolbar-row>
@@ -69,13 +75,18 @@
         <div>
           <mat-card-header>
 
-            <button mat-button matPrefix>
-                <mat-icon style="font-size: 50px" >account_circle</mat-icon>
-            </button>
+            <!-- <button mat-button matPrefix>
+                <mat-icon style="font-size: 50px">account_circle</mat-icon>
+            </button> -->
+            <div fxLayout="row" fxLayoutAlign="start start">
+            <div>            <button mat-fab (click)="profile()"></button>
+            </div>
 
+<div>
             <mat-card-title class="text_color">{{firstName}} {{lastName}}</mat-card-title>
             <mat-card-subtitle>{{email}}</mat-card-subtitle>
-
+        </div>
+    </div>
           </mat-card-header><br>
 
           <mat-divider></mat-divider>
@@ -113,15 +124,13 @@
 
 
                 <div>
-                        <div *ngFor="let label of labels">
-                          <button mat-button style="width:100%">
+                    <div *ngFor="let label of labels">
+                        <button mat-button style="width:100%">
                             <mat-icon>label_outline</mat-icon>
-                            <span style="margin:20%">
-                              {{label.label}}
-                            </span>
-                          </button>
-                        </div>
-                      </div>
+                            <span style="margin:20%">{{label.label}}</span>
+                        </button>
+                    </div>
+                </div>
 
 
                 <div>

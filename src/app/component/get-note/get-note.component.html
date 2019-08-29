@@ -33,9 +33,9 @@
               </mat-chip-list>
           </div>
 
-        <!-- <div *ngFor="let item of notes">
-          <app-labels [notes] = "items.label"></app-labels>
-        </div> -->
+        <div *ngFor="let items of notee">
+          <app-labels [noteData] = "items.label"></app-labels>
+        </div>
 
         <div fxLayout="row" fxLayoutAlign="space-around end">
           <div class="noteIcon">

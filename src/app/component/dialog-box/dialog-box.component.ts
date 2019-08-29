@@ -9,8 +9,10 @@ import { NoteService } from '../../core/service/note.service'
   templateUrl: './dialog-box.component.html',
   styleUrls: ['./dialog-box.component.scss']
 })
+
 export class DialogBoxComponent implements OnInit {
   @Input() noteData: any
+
   constructor(private snackBar: MatSnackBar,
     public dialogBox: MatDialog,
     private noteService: NoteService,
@@ -24,7 +26,7 @@ export class DialogBoxComponent implements OnInit {
   }
 
   /** 
-   * Onclick function for updating a Note
+   * @description Onclick function for updating a Note
    */
   onClose() {
     this.dialogBox.closeAll();
@@ -34,7 +36,7 @@ export class DialogBoxComponent implements OnInit {
       "content": this.content.value
     }
 
-    this.noteService.updateNote('note/updateNote/' + this.data.noteId, data1).subscribe(
+    this.noteService.updateNote(this.data.noteId, data1).subscribe(
       (res: any) => {
         this.snackBar.open(
           "Notes are updated successfully",

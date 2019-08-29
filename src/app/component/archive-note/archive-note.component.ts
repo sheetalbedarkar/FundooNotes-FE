@@ -9,11 +9,13 @@ import { MatDialog} from '@angular/material/dialog';
   templateUrl: './archive-note.component.html',
   styleUrls: ['./archive-note.component.scss']
 })
+
 export class ArchiveNoteComponent implements OnInit {
   @Input() noteData : any
   note : noteModel = new noteModel();
   notes : any[];
   isArchive
+
   constructor(
     private snackBar: MatSnackBar, 
     private noteService: NoteService,
@@ -25,35 +27,33 @@ export class ArchiveNoteComponent implements OnInit {
   }
 
 /** 
- * function for displaying all archived Note
+ * @description function for displaying all archived Note
  */
   getAllArchiveNotes() {
-    this.noteService.getAllArchiveNotes('note/getAllArchiveNotes').subscribe(
+    this.noteService.getAllArchiveNotes().subscribe(
       (response: any) => 
       {
-      console.log(response);
-      //this.note = response;
-      this.notes = response.result
+        this.notes = response.result
     })
   }
 
+/** 
+ * @description function to make a note archived
+ */
   onArchive(items,$event) {
     this.isArchive = $event
     var data = {
       "id" : items._id
     }
-    console.log("data",data)
-    console.log("isArchive noteId :::::::",data)
-    this.noteService.archiveNote('note/archiveNote/'+data.id,data).subscribe(
-
-      (response: any) => {
-        
+   
+    this.noteService.archiveNote(data.id,data).subscribe(
+      (response: any) => 
+      {
           this.snackBar.open(
             "Note is unarchived",
             "undo",
             { duration: 2500 }
           )
-
         },
         (error: any) =>
         {
@@ -61,9 +61,9 @@ export class ArchiveNoteComponent implements OnInit {
             "Notes unarchived failed",
             "undo",
           )
-          }
-    )
-  }
+        }
+      )
+    }
 
   colorCodes =
   [
@@ -88,21 +88,18 @@ export class ArchiveNoteComponent implements OnInit {
   ]
 
     
-
-    changeColor(color, items) {
-      console.log("items",items)
-     // this.color = $event
-      console.log("get color", color);
+/** 
+ * @description function to add a color to note
+ */
+    changeColor(color, items) 
+    {
       var data = {
         "color": color,
         "id": items._id
       }
-      console.log("jdfdhfhd", data);
-  
-      this.noteService.postColor('note/setColor',data).subscribe(
+
+      this.noteService.postColor(data).subscribe(
         (response: any) => {
-          console.log(response);
-         
           this.getAllArchiveNotes();
           this.snackBar.open(
             'note color updated Successfully..', 
@@ -111,13 +108,12 @@ export class ArchiveNoteComponent implements OnInit {
   
         },
         error => {
-          console.log(error);
           this.snackBar.open(
             'note color not updated', 
             'End now', 
             { duration: 1000 });
-        })
+        }
+      )
     }
-
 
 }
